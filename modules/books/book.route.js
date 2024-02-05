@@ -1,19 +1,39 @@
 const route = require("express").Router();
 
-route.get("/", (req, res) => {
-  res.json({ message: "we are inside get method " });
+route.get("/", (req, res, next) => {
+  try {
+    res.json({ message: "we are inside get method " });
+  } catch (error) {
+    next(error);
+  }
 });
-route.post("/", (req, res) => {
-  res.json({ message: "we are inside post method " });
+route.post("/", (req, res, next) => {
+  try {
+    res.json({ message: "we are inside post method " });
+  } catch (error) {
+    next(error);
+  }
 });
 route.put("/:id", (req, res) => {
-  res.json({ message: "we are inside put method " });
+  try {
+    res.json({ message: "we are inside put method " });
+  } catch (error) {
+    next(error);
+  }
 });
 route.patch("/:id", (req, res) => {
-  res.json({ message: "we are inside patch method " });
+  try {
+    res.json({ message: "we are inside patch method " });
+  } catch (error) {
+    next(error);
+  }
 });
 route.delete("/:id", (req, res) => {
-  res.json({ message: "we are inside delete method " });
+  try {
+    res.json({ message: "we are inside delete method " });
+  } catch (error) {
+    next(error);
+  }
 });
 
 module.exports = route;
