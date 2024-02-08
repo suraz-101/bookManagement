@@ -8,8 +8,12 @@ const getAllUsers = () => {
   return userModel.find();
 };
 
-const updateUser = () => {};
+const updateUser = (_id, payload) => {
+  return userModel.updateOne({ _id }, payload);
+};
 
-const deleteUser = () => {};
+const deleteUser = (_id) => {
+  return userModel.deleteOne({ _id });
+};
 
 module.exports = { create, getAllUsers, updateUser, deleteUser };

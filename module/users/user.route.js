@@ -21,9 +21,11 @@ userRoute.post(`/`, userValidation, async (req, res, next) => {
   }
 });
 
-userRoute.put(`/:id`, (req, res, next) => {
+userRoute.put(`/:id`, userValidation, async (req, res, next) => {
   try {
-    res.json({ message: "we are inside put method of the project" });
+    const { id } = req.params;
+    const result = await userController.updateUser(id, req.body);
+    res.status(200).json({ data: result });
   } catch (error) {
     next(error);
   }
@@ -37,9 +39,11 @@ userRoute.patch(`/:id`, (req, res, next) => {
   }
 });
 
-userRoute.delete(`/:id`, (req, res, next) => {
+userRoute.delete(`/:id`, async (req, res, next) => {
   try {
-    res.json({ message: "we are inside delete method of the project" });
+    const { id } = req.params;
+    const result = await userController.deleteUser(id);
+    res.status(200).json({ message: result });
   } catch (error) {
     next(error);
   }
