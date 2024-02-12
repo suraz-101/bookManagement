@@ -8,11 +8,9 @@ const apiVersion = "/api/v1";
 
 app.use(express.json());
 
-mongoose
-  .connect("mongodb://localhost:27017/Book-management-system")
-  .then(() => {
-    console.log("You are connected to Database");
-  });
+mongoose.connect(process.env.DB).then(() => {
+  console.log("You are connected to Database");
+});
 
 app.use(morgan("dev"));
 
